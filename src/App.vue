@@ -32,7 +32,7 @@ export default {
 };
 </script>
 
-"scoped" -- local styles👇
+// "scoped" -- local styles👇
 <style scoped>
 * {
   margin: 0;
@@ -45,4 +45,4 @@ export default {
 }
 </style>
 
-// Single file component | |
+// Single file component

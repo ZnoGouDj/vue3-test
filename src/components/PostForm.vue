@@ -1,12 +1,11 @@
 <template>
   <form @submit.prevent>
     <h4>Post creation</h4>
-    // two-way binding -- two types below: v-model || v-bind + @input
-    <input v-model="post.title" class="input" type="text" placeholder="Name" />
-    <input
+    <!-- two-way binding -- two types below: v-model || v-bind + @input -->
+    <my-input v-model="post.title" type="text" placeholder="Name" />
+    <my-input
       v-bind:value="post.body"
       @input="post.body = $event.target.value"
-      class="input"
       type="text"
       placeholder="Description"
     />
@@ -38,12 +37,6 @@ export default {
 </script>
 
 <style scoped>
-.input {
-  border: 1px solid teal;
-  padding: 10px 15px;
-  margin-top: 15px;
-}
-
 form {
   display: flex;
   flex-direction: column;
