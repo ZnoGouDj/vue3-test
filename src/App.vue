@@ -1,6 +1,7 @@
 <template>
   <div class="app">
     <h1>Post page</h1>
+    <input type="text" v-model.trim="modificatorValue" />
     <my-button @click="showDialog">Create post</my-button>
     <my-dialog v-model:show="dialogVisible">
       <post-form @create="createPost" />
@@ -27,6 +28,7 @@ export default {
         { id: 4, title: 'JavaScript 4', body: 'An article description 4' },
       ],
       dialogVisible: false,
+      modificatorValue: '',
     };
   },
   methods: {
