@@ -1,7 +1,6 @@
 <template>
   <div class="app">
     <h1>Post page</h1>
-    <input type="text" v-model.trim="modificatorValue" />
     <my-button @click="showDialog">Create post</my-button>
     <my-dialog v-model:show="dialogVisible">
       <post-form @create="createPost" />
@@ -13,6 +12,7 @@
 <script>
 import PostForm from './components/PostForm';
 import PostList from '@/components/PostList';
+import axios from 'axios';
 
 export default {
   components: {
@@ -21,14 +21,8 @@ export default {
   },
   data() {
     return {
-      posts: [
-        { id: 1, title: 'JavaScript', body: 'An article description' },
-        { id: 2, title: 'JavaScript 2', body: 'An article description 2' },
-        { id: 3, title: 'JavaScript 3', body: 'An article description 3' },
-        { id: 4, title: 'JavaScript 4', body: 'An article description 4' },
-      ],
+      posts: [],
       dialogVisible: false,
-      modificatorValue: '',
     };
   },
   methods: {
@@ -41,6 +35,14 @@ export default {
     },
     showDialog() {
       this.dialogVisible = true;
+    },
+    async fetchPosts() {
+      try {
+        const response = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10');
+        this.posts = response.data;
+      } catch (e) {
+        alert('fetch error');
+      }
     },
   },
 };
