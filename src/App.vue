@@ -61,6 +61,11 @@ export default {
   mounted() {
     this.fetchPosts();
   },
+  watch: {
+    selectedSort(newValue) {
+      console.log(newValue);
+    },
+  },
 };
 </script>
 
