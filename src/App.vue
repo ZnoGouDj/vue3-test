@@ -1,12 +1,15 @@
 <template>
   <div class="app">
     <h1>Post page</h1>
-    <my-button @click="showDialog">Create post</my-button>
+    <div class="app__btns">
+      <my-button @click="showDialog">Create post</my-button>
+      <my-select v-model="selectedSort" :options="sortOptions" />
+    </div>
     <my-dialog v-model:show="dialogVisible">
       <post-form @create="createPost" />
     </my-dialog>
     <post-list :posts="posts" @remove="removePost" v-if="!isPostLoading" />
-    <div v-else style="margin-top: 15px">Loading...</div>
+    <div v-else>Loading...</div>
   </div>
 </template>
 
@@ -25,6 +28,11 @@ export default {
       posts: [],
       dialogVisible: false,
       isPostLoading: false,
+      selectedSort: '',
+      sortOptions: [
+        { value: 'title', name: 'By name' },
+        { value: 'body', name: 'By description' },
+      ],
     };
   },
   methods: {
@@ -70,6 +78,12 @@ export default {
 
 .app > h1 {
   margin-bottom: 15px;
+}
+
+.app__btns {
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-between;
 }
 </style>
 
