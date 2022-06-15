@@ -38,7 +38,7 @@ export default {
 .post-list-enter-from,
 .post-list-leave-to {
   opacity: 0;
-  transform: translateX(130px);
+  transform: translateY(130px);
 }
 .post-list-move {
   transition: transform 0.4s ease;
