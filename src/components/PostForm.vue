@@ -35,9 +35,7 @@ export default {
   },
   watch: {
     post: {
-      handler(newVal) {
-        console.log(newVal);
-      },
+      handler(newVal) {},
       deep: true,
     },
   },
