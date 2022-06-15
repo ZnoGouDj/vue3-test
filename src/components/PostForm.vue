@@ -2,7 +2,7 @@
   <form @submit.prevent>
     <h4>Post creation</h4>
     <!-- two-way binding -- two types below: v-model || v-bind + @input -->
-    <my-input v-model="post.title" type="text" placeholder="Name" />
+    <my-input v-focus v-model="post.title" type="text" placeholder="Name" />
     <my-input
       v-bind:value="post.body"
       @input="post.body = $event.target.value"
