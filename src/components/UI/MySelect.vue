@@ -1,6 +1,6 @@
 <template>
   <select v-model="modelValue" @change="changeOption">
-    <option disabled value="">Choose something</option>
+    <option disabled value="">Sort by</option>
     <option v-for="option in options" :key="option.value" :value="option.value">
       {{ option.name }}
     </option>
@@ -27,4 +27,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+select {
+  cursor: pointer;
+}
+</style>

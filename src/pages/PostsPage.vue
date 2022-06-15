@@ -152,9 +152,6 @@ export default {
   padding: 10px;
   cursor: pointer;
 }
-.page:hover {
-  background-color: yellowgreen;
-}
 .current-page {
   color: white;
   background-color: teal;

@@ -25,14 +25,6 @@ export default {};
     cursor: pointer;
   }
 
-  button {
-    cursor: pointer;
-  }
-
-  button:hover {
-    background-color: yellowgreen;
-  }
-
   .navbar__btns {
     margin-left: auto;
   }
