@@ -1,27 +1,25 @@
 <template>
   <div>
-    <h1>{{ likes }}</h1>
-    <button @click="addLike">add like</button>
-    <!-- <h1>Post page</h1>
+    <h1>Post page</h1>
     <my-input v-focus v-model="searchQuery" placeholder="Search..." />
     <div class="app__btns">
-      <my-button @click="showDialog">Create post</my-button>
+      <my-button>Create post</my-button>
       <my-select v-model="selectedSort" :options="sortOptions" />
     </div>
     <my-dialog v-model:show="dialogVisible">
-      <post-form @create="createPost" />
+      <post-form />
     </my-dialog>
-    <post-list :posts="sortedAndSearchedPosts" @remove="removePost" v-if="!isPostLoading" />
+    <post-list :posts="sortedAndSearchedPosts" v-if="!isPostLoading" />
     <div v-else>Loading...</div>
-    <div v-intersection="loadMorePosts" class="observer"></div> -->
   </div>
 </template>
 
 <script>
 import PostForm from '@/components/PostForm';
 import PostList from '@/components/PostList';
-import { ref } from 'vue';
-
+import { usePosts } from '@/hooks/usePosts';
+import useSortedPosts from '@/hooks/useSortedPosts';
+import useSortedAndSearchedPosts from '@/hooks/useSortedAndSearchedPosts';
 export default {
   components: {
     PostList,
@@ -37,15 +35,18 @@ export default {
     };
   },
   setup(props) {
-    const likes = ref(0);
-
-    const addLike = () => {
-      likes.value++;
-    };
+    const { posts, totalPages, isPostsLoading } = usePosts(10);
+    const { sortedPosts, selectedSort } = useSortedPosts(posts);
+    const { searchQuery, sortedAndSearchedPosts } = useSortedAndSearchedPosts(sortedPosts);
 
     return {
-      likes,
-      addLike,
+      posts,
+      totalPages,
+      isPostsLoading,
+      sortedPosts,
+      selectedSort,
+      searchQuery,
+      sortedAndSearchedPosts,
     };
   },
 };
