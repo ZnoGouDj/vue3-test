@@ -39,7 +39,6 @@
 <script>
 import PostForm from '@/components/PostForm';
 import PostList from '@/components/PostList';
-import axios from 'axios';
 import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
 
 export default {
